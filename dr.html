@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С днем рождения, папа!</title>
+    <!-- Шрифт для элегантности -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./favicon-16x16.png">
+    <link rel="icon" href="./favicon-32x32.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(145deg, #0b1a2e 0%, #1a2f44 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+        }
+
+        .card {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(18, 40, 60, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-radius: 60px 60px 40px 40px;
+            padding: 35px 30px 45px;
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(70, 150, 255, 0.2);
+            border: 1px solid rgba(100, 180, 255, 0.25);
+            transition: all 0.2s ease;
+        }
+
+        /* ГЛАВНЫЙ ЗАГОЛОВОК */
+        .main-title {
+            text-align: center;
+            font-size: 3.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #c2e2ff;
+            text-shadow: 0 0 15px #3a8cff, 0 0 30px #1f6ac0, 0 4px 10px rgba(0, 0, 0, 0.6);
+            margin-bottom: 30px;
+            word-break: break-word;
+            background: linear-gradient(135deg, #b0d4ff, #e0f0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px #2a7fff;
+        }
+
+        /* ФОТО ПАПЫ */
+        .photo-papa {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 45px;
+        }
+
+        .photo-papa img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 12px 30px rgba(0, 20, 50, 0.8), 0 0 0 4px #4680d9, 0 0 0 8px rgba(70, 128, 217, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .photo-papa img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px #1f4f8a, 0 0 0 6px #6aaaff;
+        }
+
+        /* ОРИГИНАЛЬНОЕ ПОЗДРАВЛЕНИЕ (синяя волна) */
+        .original-message {
+            background: rgba(10, 30, 58, 0.6);
+            backdrop-filter: blur(2px);
+            padding: 18px 25px;
+            border-radius: 50px;
+            margin-bottom: 40px;
+            text-align: center;
+            border-left: 6px solid #3a8cff;
+            border-right: 6px solid #3a8cff;
+            box-shadow: 0 0 25px rgba(0, 100, 255, 0.2);
+        }
+
+        .original-message p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: #d6ebff;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .original-message strong {
+            color: #ffd966;
+            font-weight: 600;
+            text-shadow: 0 0 12px #ffb347;
+        }
+
+        /* СЕТКА ДЕТЕЙ */
+        .children-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px 20px;
+            margin-top: 15px;
+        }
+
+        .child-card {
+            background: rgba(8, 28, 55, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 40px 40px 30px 30px;
+            padding: 15px 10px 10px;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(70, 150, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            cursor: default;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .child-card:hover {
+            transform: translateY(-8px);
+            background: rgba(15, 45, 80, 0.8);
+            border-color: #5b9aff;
+            box-shadow: 0 15px 30px rgba(0, 60, 150, 0.6);
+        }
+
+        .child-photo {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 3px solid #3478c7;
+            box-shadow: 0 6px 16px rgba(0, 30, 70, 0.6);
+            transition: border 0.2s ease;
+            background: #0b2440;
+        }
+
+        .child-card:hover .child-photo {
+            border-color: #90c2ff;
+        }
+
+        .child-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .child-card:hover .child-photo img {
+            transform: scale(1.04);
+        }
+
+        .child-name {
+            margin-top: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #c6e0ff;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 6px #001a33;
+            border-bottom: 1px dashed #3a7fcb;
+            padding-bottom: 4px;
+        }
+
+        /* ТЕКСТ, который появляется ниже (индивидуальное познание) */
+        .child-message {
+            margin-top: 12px;
+            padding: 10px 10px 6px;
+            background: rgba(0, 40, 85, 0.5);
+            backdrop-filter: blur(2px);
+            border-radius: 30px;
+            min-height: 55px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #2d6fb0;
+            transition: all 0.3s ease;
+        }
+
+        .child-message span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #ecf7ff;
+            text-align: center;
+            line-height: 1.4;
+            padding: 4px 2px;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        /* При наведении на карточку — текст становится ярче и меняет фон */
+        .child-card:hover .child-message {
+            background: rgba(20, 70, 140, 0.7);
+            border-color: #7bb2ff;
+            box-shadow: 0 0 20px #1f6ec0;
+        }
+
+        .child-card:hover .child-message span {
+            opacity: 1;
+            color: #ffffff;
+        }
+
+        /* Адаптив */
+        @media (max-width: 860px) {
+            .children-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .main-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 20px 15px 30px;
+                border-radius: 30px;
+            }
+            .main-title {
+                font-size: 2.2rem;
+            }
+            .photo-papa img {
+                width: 140px;
+                height: 140px;
+            }
+            .children-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .child-message span {
+                font-size: 0.8rem;
+            }
+            .original-message p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .children-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        /* красивое подчеркивание */
+        .glow-text {
+            color: #cce5ff;
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            text-align: center;
+            color: #6f94c7;
+            font-weight: 300;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            border-top: 1px solid rgba(70, 140, 255, 0.2);
+            padding-top: 18px;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+
+    <!-- Заголовок -->
+    <h1 class="main-title">С Днем Рождения папа!</h1>
+
+    <!-- Фото папы (название: papa.jpg) -->
+    <div class="photo-papa">
+        <img src="./papa.jpg" alt="Фото папы">
+    </div>
+
+    <!-- Оригинальное поздравление (синяя волна) -->
+    <div class="original-message">
+        <p>
+           Дорогой папа, спасибо тебе за все, что ты для нас делаешь. Мы тебя очень любим и хотим, чтобы ты всегда улыбался.
+            <span style="display: inline-block; margin-top: 6px; font-weight: 300; color: #b0d4ff;">
+            </span>
+        </p>
+    </div>
+
+    <!-- 4 фотографии детей (названия: child1.jpg, child2.jpg, child3.jpg, child4.jpg) -->
+    <div class="children-grid">
+        <!-- Ребёнок 1 -->
+        <div class="child-card">
+            <div class="child-photo">
+                <img src="./child1.jpg" alt="Дочь 1">
+            </div>
+            <div class="child-name">Соня</div>
+            <div class="child-message">
+                <span>Пусть каждый год будет наполнен яркими моментами, которые захочется вспоминать</span>
+            </div>
+        </div>
+
+        <!-- Ребёнок 2 -->
+        <div class="child-card">
+            <div class="child-photo">
+                <img src="./child2.jpg" alt="Сын 1">
+            </div>
+            <div class="child-name">Рома</div>
+            <div class="child-message">
+                <span>Пап, не переживай по мелочам, никогда не грусти, будь здоровым и пусть тебя радуют близкие, спасибо что ты есть</span>
+            </div>
+        </div>
+
+        <!-- Ребёнок 3 -->
+        <div class="child-card">
+            <div class="child-photo">
+                <img src="./child3.jpg" alt="Сын 2">
+            </div>
+            <div class="child-name">Дима</div>
+            <div class="child-message">
+                <span>Пап, желаю тебе мирного неба над головой и хорошего настроения, будь всегда искреним и радостным</span>
+            </div>
+        </div>
+
+        <!-- Ребёнок 4 -->
+        <div class="child-card">
+            <div class="child-photo">
+                <img src="./child4.jpg" alt="Сын 3">
+            </div>
+            <div class="child-name">Мишка</div>
+            <div class="child-message">
+                <span>Целую тебя с язычком! Гав!</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        ❤️С любовью от всех детей❤️ 
+    </div>
+</div>
+</body>
+</html>
